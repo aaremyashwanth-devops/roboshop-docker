@@ -15,7 +15,7 @@ services:
     container_name: frontend
     ports: 
       - "80:80"
-network:
+networks:
   default:
     driver: bridge
     name: roboshop
