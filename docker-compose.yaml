@@ -26,6 +26,17 @@ services:
     depends_on:
       - catalogue
       - redis
+  mysql:
+    build: ./mysql
+    image: 200620009955/mysql:1.0.0
+    container_name: mysql\
+  shipping:
+    build: ./shipping
+    image: 200620009955/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+    - mysql
+    - cart
   frontend: 
     build: ./frontend
     image: frontend:1.0.0
