@@ -29,7 +29,7 @@ services:
   mysql:
     build: ./mysql
     image: 200620009955/mysql:1.0.0
-    container_name: mysql\
+    container_name: mysql
   shipping:
     build: ./shipping
     image: 200620009955/shipping:1.0.0
