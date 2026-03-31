@@ -38,8 +38,7 @@ services:
     - mysql
     - cart
   rabbitmq:
-    build: rabbitmq:3
-    image: 200620009955/rabbitmq:1.0.0
+    image: rabbitmq:3
     environment: 
       RABBITMQ_DEFAULT_USER: Rodoshop 
       RABBITMQ_DEFAULT_PASS: Roboshop123 
@@ -61,6 +60,7 @@ services:
       - rabbitmq
       - user
       - cart
+      
   frontend: 
     build: ./frontend
     image: 200620009955/frontend:1.0.0
@@ -75,6 +75,7 @@ services:
       - cart
       - mysql
       - shipping
+      - payment
 networks:
   default:
     driver: bridge
