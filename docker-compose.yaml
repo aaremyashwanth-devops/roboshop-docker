@@ -9,12 +9,31 @@ services:
     container_name: catalogue
     depends_on:
       - mongodb
+  user:
+    build: ./user
+    image: user:1.0.0.
+    container_name: user
+    depends_on:
+      - mongodb
+      - redis
+  redis:
+    image: redis:7
+    conatiner_name: redis
+  cart: 
+    buils: ./cart
+    image: cart:1.0.0
+    container_name: cart
+    depends_on:
+      - catalogue
+      - redis
   frontend: 
     build: ./frontend
     image: frontend:1.0.0
     container_name: frontend
     ports: 
       - "80:80"
+    depends_on:
+      - catalogue
 networks:
   default:
     driver: bridge
