@@ -33,7 +33,11 @@ services:
     ports: 
       - "80:80"
     depends_on:
+      - mongodb
       - catalogue
+      - user
+      - redis
+      - cart
 networks:
   default:
     driver: bridge
