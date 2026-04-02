@@ -4,7 +4,7 @@ services:
     image: 200620009955/mongodb:1.0.0
     container_name: mongodb  
     volumes:
-      - mongodb: /data/db
+      - mongodb:/data/db
   catalogue:
     build: ./catalogue
     image: 200620009955/catalogue:1.0.0
@@ -24,7 +24,7 @@ services:
     image: redis:7
     container_name: redis
     volumes:
-      - redis: /data
+      - redis:/data
   cart: 
     build: ./cart
     image: 200620009955/cart:1.0.0
@@ -37,7 +37,7 @@ services:
     image: 200620009955/mysql:1.0.0
     container_name: mysql
     volumes:
-      - mysql: /var/lib/mysql
+      - mysql:/var/lib/mysql
   shipping:
     build: ./shipping
     image: 200620009955/shipping:1.0.0
