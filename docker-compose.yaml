@@ -3,12 +3,15 @@ services:
     build: ./mongodb
     image: 200620009955/mongodb:1.0.0
     container_name: mongodb  
+    volumes:
+      - mongodb: /data/db
   catalogue:
     build: ./catalogue
     image: 200620009955/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
+    
   user:
     build: ./user
     image: 200620009955/user:1.0.0.
@@ -16,9 +19,12 @@ services:
     depends_on:
       - mongodb
       - redis
+    
   redis:
     image: redis:7
     container_name: redis
+    volumes:
+      - redis: /data
   cart: 
     build: ./cart
     image: 200620009955/cart:1.0.0
@@ -30,6 +36,8 @@ services:
     build: ./mysql
     image: 200620009955/mysql:1.0.0
     container_name: mysql
+    volumes:
+      - mysql: /var/lib/mysql
   shipping:
     build: ./shipping
     image: 200620009955/shipping:1.0.0
@@ -43,6 +51,8 @@ services:
       RABBITMQ_DEFAULT_USER: Rodoshop 
       RABBITMQ_DEFAULT_PASS: Roboshop123 
     container_name: rabbitmq
+    volumes:
+      - rabbitmq: /var/lib/rabbitmq
 
   payment:
     build: ./payment
@@ -81,5 +91,10 @@ networks:
     driver: bridge
     name: roboshop
     external: false
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
 
     
